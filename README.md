@@ -15,14 +15,14 @@ in order to enable deployments on hosts, which don't support key based ssh
     local: "path/of/your/local/mashine"
     extra: "--your extra params for rsync"
     remote: "path/where/to/deploy/to"
-    runBeforeDeployment: |
+    runBefore: |
       cd somewhere/
-    runAfterDeployment: |
+    runAfter: |
       cd ../somewhere/back/to
 ```
 
 You can do something before and after your deployment on the remote.
-For this, you use the `runBeforeDeployment` and `runAfterDeployment` inputs.
+For this, you use the `runBefore` and `runAfter` inputs.
 
 ### Optional (and not firmly tested)
 
@@ -41,9 +41,9 @@ Feel free to contribute.
     local: "path/of/your/local/mashine"
     extra: "--your extra params for rsync"
     remote: "path/where/to/deploy/to"
-    runBeforeDeployment: |
+    runBefore: |
       cd somewhere/
-    runAfterDeployment: |
+    runAfter: |
       cd ../somewhere/back/to
 ```
 
