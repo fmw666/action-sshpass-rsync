@@ -71,9 +71,9 @@ else # Private key
   echo "> Deploying now"
   if [ -z "$INPUT_EXTRA" ]
   then
-    EXTRA="$INPUT_EXTRA"
     sh -c "sshpass -e rsync -avhz --progress --stats -e 'ssh -p $INPUT_PORT' $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE"
   else
+    EXTRA="$INPUT_EXTRA"
     sh -c "sshpass -e rsync -avhz --progress $EXTRA --stats -e 'ssh -p $INPUT_PORT' $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE"
   fi
 
