@@ -41,6 +41,7 @@ then # Password
 
   [[ -z "${INPUT_RUNAFTER}" ]] && {
     echo "> Executing commands after deployment"
+    echo "RUNAFTER is $RUNAFTER"
     sshpass -e ssh -T -o StrictHostKeyChecking=no -p $INPUT_PORT $INPUT_USER@$INPUT_HOST "$RUNAFTER"
   }
 
