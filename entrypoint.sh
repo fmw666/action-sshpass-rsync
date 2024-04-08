@@ -26,7 +26,7 @@ then # Password
   echo "> Exporting Password"
   export SSHPASS=$PASS
 
-  [[ -z "${INPUT_RUNBEFORE}" ]] && {
+  [[ -n "${INPUT_RUNBEFORE}" ]] && {
     echo "> Executing commands before deployment"
     sshpass -e ssh -T -o StrictHostKeyChecking=no -p $INPUT_PORT $INPUT_USER@$INPUT_HOST "$RUNBEFORE"
   }
@@ -41,7 +41,7 @@ then # Password
     sh -c "sshpass -p $INPUT_PASS rsync -avhz $EXTRA --progress --stats -e  'ssh -p $INPUT_PORT' $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE"
   fi
 
-  [[ -z "${INPUT_RUNAFTER}" ]] && {
+  [[ -n "${INPUT_RUNAFTER}" ]] && {
     echo "> Executing commands after deployment"
     echo "RUNAFTER is $RUNAFTER"
     sshpass -e ssh -T -o StrictHostKeyChecking=no -p $INPUT_PORT $INPUT_USER@$INPUT_HOST "$RUNAFTER"
