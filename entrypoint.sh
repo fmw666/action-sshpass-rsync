@@ -16,8 +16,8 @@ echo "INPUT_REMOTE: ${INPUT_REMOTE}"
 echo "INPUT_RUN_BEFORE: ${INPUT_RUNBEFORE}"
 echo "INPUT_RUN_AFTER: ${INPUT_RUNAFTER}"
 
-RUNBEFORE="${INPUT_RUNBEFORE/$'\n'/' && '}"
-RUNAFTER="${INPUT_RUNAFTER/$'\n'/' && '}"
+RUNBEFORE=$(echo "$INPUT_RUNBEFORE" | sed ':a;N;$!ba;s/\n/ \&\& /g')
+RUNAFTER=$(echo "$INPUT_RUNAFTER" | sed ':a;N;$!ba;s/\n/ \&\& /g')
 
 echo "RUNAFTER: $RUNAFTER"
 
