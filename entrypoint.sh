@@ -19,6 +19,9 @@ echo "> Starting ${GITHUB_WORKFLOW}:${GITHUB_ACTION}"
 RUNBEFORE="${INPUT_RUNBEFORE/$'\n'/' && '}"
 RUNAFTER="${INPUT_RUNAFTER/$'\n'/' && '}"
 
+echo "INPUT_RUNAFTER: $INPUT_RUNAFTER"
+echo "RUNAFTER: $RUNAFTER"
+
 if [ -z "$INPUT_KEY" ]
 then # Password
   echo "> Exporting Password"
